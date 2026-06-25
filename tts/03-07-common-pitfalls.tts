@@ -1,0 +1,7 @@
+Common pitfalls to carry forward.
+
+Not in with a null in the list returns zero rows, so either guarantee no nulls or rewrite with not exists. Like with a leading percent sign cannot use a standard b-tree index and forces a full scan; reach for trigram indexes or full-text search there. And between is inclusive on both ends, so for half-open ranges over timestamps, like all of April, prefer greater or equal to the first of April and less than the first of May.
+
+Null ordering defaults differ across dialects, so write nulls first or nulls last explicitly whenever correctness depends on it. And limit without order by gives non-deterministic results; add the order even in throwaway queries, because habits stick.
+
+Finally, two more. Don't reach for union when union all is correct, because union does an implicit dedup that costs a sort or a hash table. And don't mix and with or without parentheses, because and binds tighter, so a, or b and c, means a, or the quantity b and c.

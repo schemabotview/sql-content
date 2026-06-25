@@ -1,0 +1,7 @@
+Common pitfalls to carry forward.
+
+The first trap is forgetting the where clause on an update or a delete. Without it, you touch every row in the table. Run it as a select first to preview exactly which rows you would change.
+
+The second is comparing to null with equals. Null is not equal to anything, including itself, so that comparison is always unknown, which the engine treats as false. Use is null and is not null instead. The third is leaning on select star in production code: when columns change, downstream code breaks silently, so name the columns you actually need.
+
+Two more. A missing primary key means the engine can't enforce row identity, and many tools misbehave. And trusting row order without an order by is a mistake, because today's order is not tomorrow's guarantee.

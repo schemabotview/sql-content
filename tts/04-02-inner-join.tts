@@ -1,0 +1,7 @@
+Inner join, and on versus using.
+
+An inner join keeps only the rows that have a match on both sides. The word inner is optional; a bare join means the same thing, but writing inner join reads better in real code.
+
+There are two ways to specify the predicate. The on clause takes any boolean expression and is fully general: it allows inequalities, like joining on a date falling between a start and an end, and multi-column predicates. The using clause is shorthand for when the join columns have the same name on both sides; it produces a single column in the output instead of two.
+
+One thing to avoid: natural join, which auto-joins on every same-named column. It looks clever, and it breaks badly the moment somebody adds a new column with a colliding name.

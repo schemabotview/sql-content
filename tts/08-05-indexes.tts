@@ -1,0 +1,7 @@
+Indexes: the lookup acceleration mechanism.
+
+An index is a separate data structure, usually a b-tree, that the database maintains alongside a table, mapping the values of one or more columns back to the rows that contain them. With an index on customer id, the engine can find all of one customer's orders without scanning the whole orders table.
+
+A few things to know. Indexes accelerate reads but slow writes, because every insert, update, or delete that touches an indexed column must also update the index. Primary keys and unique constraints are indexed automatically, so you usually only add indexes explicitly for columns you filter or join on heavily. Selectivity matters: an index on a column with only two distinct values is almost never used.
+
+Two more. Composite indexes are order-sensitive: an index on a, then b, accelerates filters on a, and on a and b together, but not on b alone. And the planner picks: just because an index exists doesn't mean it will be used, because on small tables a sequential scan is often cheaper.

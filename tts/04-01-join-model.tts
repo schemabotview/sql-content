@@ -1,0 +1,7 @@
+The conceptual model of a join.
+
+Conceptually, every join is the same two-step idea. First, pair up every row of table a with every row of table b: that is the cartesian product. Second, keep only the pairs that match the on predicate.
+
+Real engines never actually build the full cartesian product. They use hash joins, sort-merge joins, or nested loops, depending on the data. But the result is as if they did. That is a useful mental model, because it explains why a missing on clause produces all n times m rows, and why a join key on a unique column produces at most n rows.
+
+Outer joins change the second step. Instead of dropping unmatched rows, they keep them and fill the missing side with null.

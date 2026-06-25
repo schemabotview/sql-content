@@ -1,0 +1,7 @@
+The over clause: keep the row, compute over a window.
+
+A window function is an aggregate-like computation that runs over a set of rows, called the window, and returns one value per input row, instead of collapsing the rows the way group by does.
+
+The syntax is any aggregate or special function followed by over and a set of parentheses. The over clause is what turns an ordinary function into a window function. Inside the parentheses you describe the window: which rows to include, in what order, and which subset of them this row should see.
+
+An empty over, with nothing in the parentheses, means the whole table is the window, and every row sees all rows. The key contrast to hold onto: group by collapses rows into one per group, while a window function attaches the group's computation to every row and keeps them all.

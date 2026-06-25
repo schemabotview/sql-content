@@ -1,0 +1,5 @@
+Scalar subqueries and derived tables.
+
+Scalar subqueries are the simplest case. They return a single value that drops into any expression context. The engine enforces the one-row, one-column constraint at runtime, and returning more rows is an error.
+
+Derived tables are subqueries in the from clause. They let you treat the result of one query as the input rows of another, and they are how you built pipelines before common table expressions were widely supported. Every derived table must have an alias; without one, the engine has no name to bind its columns to.

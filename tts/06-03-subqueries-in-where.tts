@@ -1,0 +1,7 @@
+Subqueries in where: in, exists, and null.
+
+Four common predicates use a subquery on the right-hand side. X in a subquery is true if x equals any value the subquery returns. X not in a subquery is true if x differs from every value returned, but it inherits the null trap from notebook three: any null in the subquery's result makes the whole predicate unknown, so no rows come back.
+
+Exists of a subquery is true if the subquery returns at least one row; the actual column values don't matter, so selecting the literal one works fine. Not exists is true if the subquery returns zero rows, and it handles null correctly, which is why most experienced sequel writers prefer not exists over not in.
+
+The rule of thumb: use exists and not exists when you are asking, are there any matching rows. Use in when you are asking, is this value in a small static list.

@@ -1,0 +1,5 @@
+Aggregate functions: collapsing many rows into one.
+
+An aggregate function takes a set of rows and returns a single value. The five standard aggregates cover almost everything. Count tells you how many. Sum gives a total. Average gives the arithmetic mean. Min gives the smallest value, and max gives the largest.
+
+When you call an aggregate without a group by, the whole table is treated as one group, and you get back a single-row result. So a count over the whole orders table tells you the total number of orders, in one number.

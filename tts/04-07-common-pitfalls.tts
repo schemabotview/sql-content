@@ -1,0 +1,7 @@
+Common pitfalls to carry forward.
+
+A missing or wrong on predicate is the most common way to accidentally generate a cartesian product, so check a join's row count against your expectation. Join keys containing null silently disappear from inner joins, so declare key columns not null whenever the data model allows. And outer-join nulls are ambiguous, so disambiguate by checking a known not-null column from the right side.
+
+A subtle one: filtering an outer-joined column in where converts it back to an inner join. A predicate like where amount greater than ten, after a left join, drops the unmatched rows, because null greater than ten is unknown. If you want to keep them, move the predicate into the on clause.
+
+And a few habits: avoid select star across joins, because colliding column names get mangled; never use comma-separated from without a where, because that is an instant cartesian product; and once you alias a table, reference it by that alias everywhere in the query.

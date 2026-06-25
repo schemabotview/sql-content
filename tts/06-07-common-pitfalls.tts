@@ -1,0 +1,7 @@
+Common pitfalls to carry forward.
+
+A scalar subquery that returns more than one row is a runtime error; if the data might produce more, add a limit one with an explicit order by, or rewrite as a join. Not in with a nullable subquery is the same trap as before, so replace it with not exists. And correlated subqueries can be expensive, because conceptually they run once per outer row; check the query plan when performance matters.
+
+A few more. Every derived table in the from clause needs an alias. Don't treat common table expressions as performance-neutral, because an inlined one referenced many times can be evaluated many times unless materialized.
+
+Finally, guard against runaway recursive expressions: include a depth counter you can cap, and make sure your join condition cannot cycle, or use union instead of union all to dedupe rows in a graph traversal. And the anchor and the recursive step must produce the same number of columns, with compatible types, in the same order.

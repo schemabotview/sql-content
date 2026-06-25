@@ -1,0 +1,7 @@
+Common pitfalls to carry forward.
+
+The default-frame surprise is the big one: with an order by inside over but no explicit frame, the frame defaults to range, not rows. For most running aggregates you actually want rows, between unbounded preceding and current row, so be explicit. Related: last value returns the current row, not the partition's last row, because the default frame ends at the current row; to get the real last value, extend the frame to unbounded following.
+
+Remember that where cannot reference window functions, because they run after where, and in fact after group by and having. To filter on a window result, wrap the query in a common table expression or subquery, or use qualify if your dialect supports it. And keep in mind the two order-by clauses are independent: one controls window semantics, the other controls display.
+
+A few more. Partitioning by a high-cardinality column creates many tiny windows and is expensive, and if the column is unique per row, every window is one row, which usually signals wrong logic. N-tile does not handle ties specially, so two equal rows can land in different buckets. And window functions and aggregates can't be nested inside each other directly; when you need both, aggregate first in a common table expression, then window over the result.

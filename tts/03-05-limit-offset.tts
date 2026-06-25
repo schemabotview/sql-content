@@ -1,0 +1,7 @@
+Limit, offset, and why deep pagination is slow.
+
+Limit n keeps only the first n rows of the result. Limit n offset m skips m rows and then keeps n. Sequel server spells this differently, with offset and fetch next, or the older top, but the idea is the same.
+
+Two properties matter. First, limit without order by is non-deterministic. Top ten only makes sense once you have specified what top means. Second, offset is linear in the offset value. To return rows ten thousand and one through ten thousand and twenty, the engine still has to produce, sort, and discard the first ten thousand. On large tables, page five hundred is dramatically slower than page one.
+
+The fix for real pagination is keyset pagination, also called cursor pagination. You remember the last value you saw, and ask for rows after it, ordered by that key, with a limit. That is constant time per page no matter how deep you go.

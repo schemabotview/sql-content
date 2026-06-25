@@ -1,0 +1,7 @@
+Null in filters, and the not in trap.
+
+A quick recap: where treats unknown the same as false. Any comparison that touches null produces unknown, so the row silently disappears. Always use is null and is not null for null checks.
+
+Now the expensive surprise: not in is broken when the list contains null. If null is anywhere inside a not in list, the result is unknown for every row, so the query returns zero rows, silently.
+
+Here is why. X not in a, b, null expands to x not equals a, and x not equals b, and x not equals null. That last comparison is unknown, and something and unknown is at best unknown, which where drops. The workarounds are to filter nulls out of the list explicitly, or to use not exists, which we cover in notebook six.

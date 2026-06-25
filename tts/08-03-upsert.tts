@@ -1,0 +1,7 @@
+Upsert: on conflict and merge.
+
+Upsert means insert this row, but if it conflicts with an existing one, update instead. Two standard forms exist, and unfortunately the dialect support is fragmented.
+
+The first is insert, on conflict, do update. This is Postgres style, also supported by Sequelite, DuckDB, and CockroachDB. The conflict target is a unique or primary-key constraint, and the excluded keyword refers to the value that would have been inserted. The second is merge into a target, using a source, with when-matched and when-not-matched branches. Merge is ansi sequel, supported by sequel server, Oracle, Snowflake, BigQuery, and Postgres fifteen and later. It is more verbose but more powerful, able to insert, update, and delete in one statement. MySQL has its own insert, on duplicate key update syntax for the same idea.
+
+Pick the form your target engine supports. And don't roll your own check-then-insert, because between the check and the insert another transaction can race in and break your assumption.

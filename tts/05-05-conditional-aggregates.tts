@@ -1,0 +1,7 @@
+Conditional aggregates with filter.
+
+Sometimes you want to aggregate only the rows that match a condition, and aggregate over a different condition in the same row, all in one pass. The standard sequel feature for this is filter, with a where inside, attached to an aggregate call. For example: sum of amount, filter where order date is on or after a given day.
+
+This is dramatically cleaner than the old idiom of summing a case expression, and it lets the engine optimize more aggressively. It is supported by Postgres, DuckDB, Sequelite, and Snowflake. Sequel server and MySQL still require the case form.
+
+It is the right tool when you want side-by-side aggregates over different slices of the same rows, for instance this-period versus prior-period totals in a single row.

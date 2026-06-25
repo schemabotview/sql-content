@@ -1,0 +1,7 @@
+Data definition language: defining the shape of your data.
+
+Data definition language is the subset of sequel that creates, alters, and drops the database's schema objects: tables, views, indexes, and sequences. There are three core verbs. Create makes a new schema object. Alter changes an existing one, such as adding a column, renaming it, changing its type, or adding a constraint. And drop removes the object entirely, which is almost always irreversible.
+
+A view is a saved select that you can query like a table. Creating a view doesn't store any data; each query against it re-runs the underlying select. A materialized view does store the result, and it needs to be refreshed when the source data changes. Postgres, Snowflake, Oracle, and BigQuery support materialized views natively; MySQL and sequel server have workarounds.
+
+One important runtime note: data definition language is usually auto-committed. Most engines treat each create or drop as its own transaction, so you cannot roll it back. Postgres is the notable exception, where most data definition is transactional.

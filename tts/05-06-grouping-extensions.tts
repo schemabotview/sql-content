@@ -1,0 +1,7 @@
+Grouping extensions: rollup, cube, and grouping sets.
+
+Sometimes you want multiple grouping levels in one result: a total per customer per year, plus a total per customer across all years, plus a grand total. You could write three separate queries and union all them, but standard sequel has three extensions that do it in one pass.
+
+Grouping sets is the explicit form: each tuple you list is one grouping level, and the empty tuple means the whole table with no grouping, which is the grand total. Rollup is shorthand for hierarchical grouping sets, adding subtotals along a hierarchy, which is good for time hierarchies like year, quarter, month. And cube is the power set: every combination of the listed columns, giving you all possible aggregation slices in one query.
+
+Rows that come from a rolled-up level have null in the columns that were not part of that level. The grouping function returns one for those synthetic nulls and zero for real values, so you can tell the two apart.

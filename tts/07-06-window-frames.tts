@@ -1,0 +1,7 @@
+Window frames: rows versus range.
+
+The frame is the subset of the partition the function actually sees for the current row. Without an order by inside over, the frame is the whole partition. With an order by and no explicit frame, the default frame is range, between unbounded preceding and current row. That gives you running aggregates, but the range default has a sharp edge with ties.
+
+Explicit frames come in two flavors. Rows, between some bounds, counts physical rows: rows between two preceding and current row is exactly three rows. Range, between some bounds, works on value ranges based on the order-by column, so all rows with the same value as the current row are treated as one position.
+
+The practical guidance: moving averages and trailing windows almost always want rows, not range. Range is for things like all rows in the last seven days, where the data isn't evenly spaced.

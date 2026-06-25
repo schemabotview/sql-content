@@ -1,0 +1,7 @@
+Where: operators, boolean logic, and precedence.
+
+The where clause runs per row. For each row coming from the from clause, the engine evaluates a boolean expression. Rows where it is true survive; rows where it is false or unknown are dropped.
+
+The comparison operators are standard across dialects: equals, not equals, less than, less than or equal, greater than, and greater or equal.
+
+The logical operators are and, or, and not. The trap is precedence: and binds tighter than or, the same way multiplication binds tighter than addition. When you mix them, parenthesize. The query you think you wrote and the query the parser sees can disagree without parentheses.

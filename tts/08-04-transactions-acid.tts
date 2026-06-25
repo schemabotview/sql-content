@@ -1,0 +1,7 @@
+Transactions and acid.
+
+A transaction is a unit of work the database treats as all-or-nothing. You open it with begin, run any number of statements, and end it with commit, to apply all changes, or rollback, to discard them.
+
+Acid is the four-letter guarantee transactional databases make. Atomicity means the transaction is all-or-nothing: a crash midway leaves the database as if it never started. Consistency means constraints are enforced at the transaction boundary, so you cannot commit a state that violates them. Isolation means concurrent transactions do not see each other's uncommitted work, and the strength of that promise is set by the isolation level, from read uncommitted, through read committed and repeatable read, up to serializable. Most engines default to read committed, and stricter isolation costs throughput. Durability means once commit returns, the change survives crashes and power loss, implemented through the write-ahead log.
+
+The rule of thumb: any multi-statement change that must be atomic, like a money transfer, goes inside an explicit transaction.

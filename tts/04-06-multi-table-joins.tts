@@ -1,0 +1,7 @@
+Multi-table joins, and null behavior.
+
+Joins chain. A join b, then join c, is read left to right, with each join adding another table to the running result. The order you write the joins does not have to match the order the engine executes them; the planner reorders based on cost. But for outer joins the order is semantically meaningful, because a left join b and b left join a are different queries.
+
+Two things about null in joins are worth carrying around. First, null never matches in a join key. A comparison of two columns is unknown whenever either side is null, so the row is dropped, or, in an outer join, treated as unmatched. This is why join keys are almost always declared not null.
+
+Second, a null in an outer-join result is ambiguous. Did the right side have no match, or did it have a match whose stored value happens to be null? You can't tell from the result alone. When it matters, select a not-null column from the right side, usually its primary key, and check that for null instead.

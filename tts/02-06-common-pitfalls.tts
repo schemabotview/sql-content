@@ -1,0 +1,7 @@
+Common pitfalls to carry forward.
+
+The first is referencing a select alias inside where. The alias does not exist yet at filter time, so either repeat the expression, or wrap the query in a subquery or common table expression. The second is expecting distinct to deduplicate one column at a time; it deduplicates the whole projected row.
+
+The third is using equals null instead of is null. That comparison evaluates to unknown, which where treats as not true, so no rows come back. Always use is null and is not null.
+
+And two habits worth keeping: don't lean on select star in saved code, because changing columns break things silently; and don't forget order by, because without it the engine returns rows in any order it likes, and order-dependent tests turn flaky.

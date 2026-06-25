@@ -1,0 +1,7 @@
+Normalization, in one page.
+
+Normalization is the rulebook for how to split data into tables. There are higher forms, but in practice three cover almost everything.
+
+First normal form says every cell holds one atomic value: no comma-separated lists, no json blobs standing in for what should be rows. Second normal form says non-key columns depend on the whole primary key, and it only matters when the key is composite. Third normal form says non-key columns depend on nothing but the primary key, with no transitive dependencies.
+
+The intuition is simple: things that vary independently belong in their own table, connected by foreign keys. A customer's address that changes shouldn't force you to update every order row they ever placed.

@@ -1,0 +1,7 @@
+Offset functions: looking at neighbors.
+
+Offset functions let a row see other rows in its own window. Lag of a column gives the value from a number of rows earlier in the window, defaulting to one row back. Lead gives the value from a number of rows later. First value gives the value in the first row of the window frame, and last value gives the value in the last row of the frame, which, watch out, is the frame, not the whole partition.
+
+Both lag and lead accept an optional default value for when the offset falls outside the partition. So lag of amount, one, zero, returns zero for the first row in each partition instead of null.
+
+The classic uses are month-over-month deltas, day-over-day deltas, and gap detection, where you compare each event's timestamp to the previous one in the same partition.

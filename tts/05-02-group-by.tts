@@ -1,0 +1,7 @@
+Group by: partitioning rows and the single-value-per-group rule.
+
+Group by partitions the rows coming from from and where into groups that share the same values for the listed columns, then produces exactly one output row per group.
+
+That one-output-row constraint drives the single most important rule in aggregation: every column in select must either be in the group by, or be inside an aggregate function. The reason is mechanical. Imagine grouping by customer id collapses three of one customer's orders into one row. That row clearly has a customer id, because that is the group, and it clearly has a sum of amount, because that is an aggregate. But what would it hold for a raw amount, the first order's, or the largest? The engine refuses to guess.
+
+Standard sequel enforces this rule. MySQL historically allowed it and silently picked an arbitrary value per group, which was fixed in MySQL five point seven with the only-full-group-by mode.

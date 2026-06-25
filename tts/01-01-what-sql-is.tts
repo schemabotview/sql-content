@@ -1,0 +1,7 @@
+What sequel is.
+
+Sequel stands for Structured Query Language. It is a declarative language for talking to relational databases. You describe the result you want, and the engine figures out how to produce it.
+
+It was born at IBM in the nineteen seventies, standardized as ansi sequel, and it is still the common language of data tooling today. Online transaction processing databases, data warehouses, embedded engines, business intelligence tools, and stream processors all speak some flavor of it.
+
+If you come from the java world, think of java streams, where you filter, then map, then collect. That is declarative in the same spirit. Sequel takes the idea further: the engine can reorder operations, pick join algorithms, use indexes, and parallelize work, all from the same query text.

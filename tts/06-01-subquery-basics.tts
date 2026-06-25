@@ -1,0 +1,7 @@
+Subquery basics: what they return, and where they go.
+
+A subquery is a select statement nested inside another statement. The outer query treats the subquery's result as a value, a row, or a table, depending on how it is used.
+
+By what they return, there are three shapes. A scalar subquery returns exactly one row and one column, and is usable anywhere a value is allowed. A row subquery returns one row with multiple columns, used with row-comparison constructs. And a table subquery returns many rows and many columns, used in the from clause or with in.
+
+By where they go, also three. In the select list, a subquery is almost always scalar, computed once per outer row. In the from clause, it is a table subquery treated as a virtual table, and it must have an alias. And in the where clause, it powers predicates like in and exists. Whether the subquery is correlated is a separate axis, which we cover shortly.

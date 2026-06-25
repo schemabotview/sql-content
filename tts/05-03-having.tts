@@ -1,0 +1,7 @@
+Having: filtering groups, not rows.
+
+Where filters rows before grouping. Having filters groups after grouping. The two are not interchangeable, and the choice matters for both correctness and performance.
+
+Recall the execution order: from, then where, then group by, then having, then select, then order by, then limit. Because where runs before group by, aggregates do not exist yet at where time, so filtering on a sum inside where is a category error. Because having runs after group by, aggregates do exist there.
+
+The rule of thumb is to put a predicate in where if you can. Filtering rows early shrinks the input to group by, and that is almost always faster than computing aggregates over the full table and then discarding most of them with having.

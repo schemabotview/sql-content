@@ -1,0 +1,7 @@
+Common table expressions: naming the steps of a pipeline.
+
+A common table expression, or c-t-e, is a named subquery declared at the top of a statement with the with keyword. It serves the same role as a derived table in the from clause, but with three advantages.
+
+First, it has a name, so you can refer to it as many times as you like in the main query, and in later common table expressions. Second, readability: instead of three levels of nesting, you write three named steps that read top to bottom like a small program. Third, composability: multiple common table expressions in one with clause, separated by commas, build a pipeline.
+
+One note on the optimizer. Older Postgres, before version twelve, treated common table expressions as an optimization fence and materialized them. Modern Postgres, DuckDB, and most other engines inline them by default and let the planner reorder. Use the materialized or not-materialized hints if you need to override the default.

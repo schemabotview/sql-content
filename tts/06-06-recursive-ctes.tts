@@ -1,0 +1,7 @@
+Recursive common table expressions: hierarchies and graph traversal.
+
+Some questions are inherently recursive: give me every direct and indirect report of a manager, give me the full ancestor chain of a category, give me all nodes reachable from a graph vertex. With recursive is how sequel expresses them.
+
+A recursive common table expression has two parts, glued together by union all. The anchor is a non-recursive query that produces the starting rows. The recursive step is a query that joins the expression's name back to itself, producing the next layer.
+
+The engine evaluates the anchor once, then evaluates the recursive step repeatedly, feeding the new rows back in, until the recursive step produces zero rows. Without a clear termination condition, the recursion never ends, so give the expression a depth column you can cap if you don't fully trust the data.

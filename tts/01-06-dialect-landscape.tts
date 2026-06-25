@@ -1,0 +1,7 @@
+The sequel dialect landscape.
+
+Most everyday sequel is portable. The places dialects diverge are window-function syntax, date and time functions, json and array handling, and upsert syntax.
+
+Postgres is open source and the closest thing to a reference dialect, with a rich feature set. MySQL and MariaDB are the web-stack default, historically looser, and catching up in MySQL eight and later. Sequel server, which speaks t-sequel, is the Microsoft enterprise option, and uses top instead of limit. Sequelite is embedded and single file, living inside every phone and browser. DuckDB is embedded analytics with columnar storage, and it is what we use here. And the cloud warehouses, Snowflake, BigQuery, and Redshift, each add their own quirks, like the qualify clause.
+
+We will write standard ansi sequel throughout this series, and call out dialect-specific syntax explicitly whenever it comes up.

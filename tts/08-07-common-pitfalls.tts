@@ -1,0 +1,7 @@
+Common pitfalls, and where to go next.
+
+Carry these forward. An update or delete without a where touches every row, so preview with a select first and wrap risky writes in a transaction. A positional insert without a column list breaks silently when a new column is added, so always list the columns. And a do-it-yourself upsert opens a race window, so use on conflict or merge.
+
+A few runtime ones. Long-running transactions hold locks and block concurrent work, so keep them short. Indexes are not free, because every write has to update them, so drop the ones that don't pay for themselves. And be careful: explain analyze actually executes the query, so running it on a delete runs the delete; wrap it in a transaction first if you need the plan.
+
+Where to go from here. These eight notebooks cover the sequel language itself: enough to read, write, debug, and reason about everyday queries. Beyond them sit the systems that run sequel: concurrency control internals like multi-version concurrency control and locking, replication and read replicas, sharding and distributed execution, columnar versus row storage, and per-dialect features. Pick whichever the engine you actually use cares about, and dig in from there.

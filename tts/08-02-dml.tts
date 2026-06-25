@@ -1,0 +1,5 @@
+Data manipulation language: insert, update, and delete.
+
+Data manipulation language changes the rows inside tables. Insert adds a row; listing the columns explicitly is strongly preferred over a positional insert, which silently breaks the day a new column is added. Update modifies existing rows that match a where clause. And delete removes rows that match a where clause.
+
+The single most expensive mistake in sequel is an update or a delete without a where clause. Both operate on every row in the table by default. Always preview with a select using the same predicate before running the write, and wrap the write in a transaction when you can.

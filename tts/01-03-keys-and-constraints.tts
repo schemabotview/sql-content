@@ -1,0 +1,7 @@
+Keys and constraints.
+
+Constraints are how the database refuses to store invalid data. The engine enforces them on every insert and every update, so bad data never lands in the first place.
+
+A primary key uniquely identifies a row. It is equivalent to not null plus unique, and it acts as the table's identity column. A foreign key is a column that must match a primary key in another table. The engine refuses inserts that don't resolve, and refuses deletes that would leave orphaned rows behind.
+
+A unique constraint says no two rows share this value. A not null constraint says a value is required. And a check constraint is an arbitrary boolean condition that each row must satisfy. Foreign keys are how the relational model glues independent facts together: each order points at exactly one customer.

@@ -1,0 +1,591 @@
+{
+  "concept": "SQL",
+  "design": "DESIGN.md",
+  "scenes": [
+    {
+      "id": "sql",
+      "title": "SQL — the relational query language",
+      "status": "built"
+    }
+  ],
+  "presentations": [
+    {
+      "id": "01-sql-foundations",
+      "title": "SQL Foundations & the Relational Model",
+      "notebook": "notebooks/01-sql-foundations.ipynb",
+      "defaultScene": "sql",
+      "sections": [
+        {
+          "heading": "1. What SQL is",
+          "scene": "sql",
+          "spine": true,
+          "role": "hook",
+          "focus": "sql-pipeline",
+          "audio": "audio/01-01-what-sql-is.wav"
+        },
+        {
+          "heading": "2. The relational model",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-catalog"
+          ],
+          "focus": "sql-catalog",
+          "audio": "audio/01-02-relational-model.wav"
+        },
+        {
+          "heading": "3. Keys and constraints",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-constraints"
+          ],
+          "focus": "sql-constraints",
+          "audio": "audio/01-03-keys-and-constraints.wav"
+        },
+        {
+          "heading": "4. Normalization in one page",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-catalog"
+          ],
+          "focus": "sql-table",
+          "audio": "audio/01-04-normalization.wav"
+        },
+        {
+          "heading": "5. Declarative thinking",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-pipeline"
+          ],
+          "focus": "sql-pipeline",
+          "audio": "audio/01-05-declarative-thinking.wav"
+        },
+        {
+          "heading": "6. The SQL dialect landscape",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-ddl"
+          ],
+          "focus": "sql-ddl",
+          "audio": "audio/01-06-dialect-landscape.wav"
+        },
+        {
+          "heading": "7. Common pitfalls (carry these forward)",
+          "scene": "sql",
+          "spine": false,
+          "focus": "sql-pipeline",
+          "audio": "audio/01-07-common-pitfalls.wav"
+        }
+      ]
+    },
+    {
+      "id": "02-querying-with-select",
+      "title": "Querying with SELECT",
+      "notebook": "notebooks/02-querying-with-select.ipynb",
+      "defaultScene": "sql",
+      "sections": [
+        {
+          "heading": "1. The shape of a SELECT statement",
+          "scene": "sql",
+          "spine": true,
+          "role": "hook",
+          "focus": "sql-pipeline",
+          "audio": "audio/02-01-shape-of-select.wav"
+        },
+        {
+          "heading": "2. Choosing what comes out",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-select"
+          ],
+          "focus": "sql-select",
+          "audio": "audio/02-02-choosing-what-comes-out.wav"
+        },
+        {
+          "heading": "3. Removing duplicates with DISTINCT",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-distinct"
+          ],
+          "focus": "sql-distinct",
+          "audio": "audio/02-03-distinct.wav"
+        },
+        {
+          "heading": "4. NULL in expressions — three-valued logic",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-where"
+          ],
+          "focus": "sql-where",
+          "audio": "audio/02-04-null-three-valued-logic.wav"
+        },
+        {
+          "heading": "5. The logical clause order",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-pipeline"
+          ],
+          "focus": "sql-pipeline",
+          "audio": "audio/02-05-logical-clause-order.wav"
+        },
+        {
+          "heading": "6. Common pitfalls (carry forward)",
+          "scene": "sql",
+          "spine": false,
+          "focus": "sql-pipeline",
+          "audio": "audio/02-06-common-pitfalls.wav"
+        }
+      ]
+    },
+    {
+      "id": "03-filtering-sorting-set-operations",
+      "title": "Filtering, Sorting & Set Operations",
+      "notebook": "notebooks/03-filtering-sorting-set-operations.ipynb",
+      "defaultScene": "sql",
+      "sections": [
+        {
+          "heading": "1. WHERE — operators, boolean logic, and precedence",
+          "scene": "sql",
+          "spine": true,
+          "role": "hook",
+          "focus": "sql-where",
+          "audio": "audio/03-01-where-operators.wav"
+        },
+        {
+          "heading": "2. Pattern matching, ranges, and set membership",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-where"
+          ],
+          "focus": "sql-where",
+          "audio": "audio/03-02-pattern-matching-ranges.wav"
+        },
+        {
+          "heading": "3. NULL in filters — and the NOT IN trap",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-where"
+          ],
+          "focus": "sql-where",
+          "audio": "audio/03-03-null-in-filters.wav"
+        },
+        {
+          "heading": "4. ORDER BY — direction, multi-column, and NULLs",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-order-by"
+          ],
+          "focus": "sql-order-by",
+          "audio": "audio/03-04-order-by.wav"
+        },
+        {
+          "heading": "5. LIMIT, OFFSET, and why deep pagination is slow",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-limit"
+          ],
+          "focus": "sql-limit",
+          "audio": "audio/03-05-limit-offset.wav"
+        },
+        {
+          "heading": "6. Set operations — UNION, INTERSECT, EXCEPT",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-set-ops"
+          ],
+          "focus": "sql-set-ops",
+          "audio": "audio/03-06-set-operations.wav"
+        },
+        {
+          "heading": "7. Common pitfalls (carry forward)",
+          "scene": "sql",
+          "spine": false,
+          "focus": "sql-where",
+          "audio": "audio/03-07-common-pitfalls.wav"
+        }
+      ]
+    },
+    {
+      "id": "04-joins",
+      "title": "Joins",
+      "notebook": "notebooks/04-joins.ipynb",
+      "defaultScene": "sql",
+      "sections": [
+        {
+          "heading": "1. The conceptual model of a join",
+          "scene": "sql",
+          "spine": true,
+          "role": "hook",
+          "focus": "sql-join",
+          "audio": "audio/04-01-join-model.wav"
+        },
+        {
+          "heading": "2. INNER JOIN — and `ON` vs `USING`",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-inner-join"
+          ],
+          "focus": "sql-join",
+          "audio": "audio/04-02-inner-join.wav"
+        },
+        {
+          "heading": "3. Outer joins — preserving one or both sides",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-left-join",
+            "sql-right-join",
+            "sql-full-outer-join"
+          ],
+          "focus": "sql-join",
+          "audio": "audio/04-03-outer-joins.wav"
+        },
+        {
+          "heading": "4. CROSS JOIN — and the accidental cartesian product",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-cross-join"
+          ],
+          "focus": "sql-join",
+          "audio": "audio/04-04-cross-join.wav"
+        },
+        {
+          "heading": "5. SELF JOIN — when one side is the same table",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-self-join"
+          ],
+          "focus": "sql-join",
+          "audio": "audio/04-05-self-join.wav"
+        },
+        {
+          "heading": "6. Multi-table joins and `NULL` behavior",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-join"
+          ],
+          "focus": "sql-join",
+          "audio": "audio/04-06-multi-table-joins.wav"
+        },
+        {
+          "heading": "7. Common pitfalls (carry forward)",
+          "scene": "sql",
+          "spine": false,
+          "focus": "sql-join",
+          "audio": "audio/04-07-common-pitfalls.wav"
+        }
+      ]
+    },
+    {
+      "id": "05-aggregation-and-grouping",
+      "title": "Aggregation & Grouping",
+      "notebook": "notebooks/05-aggregation-and-grouping.ipynb",
+      "defaultScene": "sql",
+      "sections": [
+        {
+          "heading": "1. Aggregate functions — collapsing many rows into one",
+          "scene": "sql",
+          "spine": true,
+          "role": "hook",
+          "focus": "sql-group-by",
+          "audio": "audio/05-01-aggregate-functions.wav"
+        },
+        {
+          "heading": "2. GROUP BY — partitioning rows and the single-value-per-group rule",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-group-by"
+          ],
+          "focus": "sql-group-by",
+          "audio": "audio/05-02-group-by.wav"
+        },
+        {
+          "heading": "3. HAVING — filtering groups, not rows",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-having"
+          ],
+          "focus": "sql-having",
+          "audio": "audio/05-03-having.wav"
+        },
+        {
+          "heading": "4. NULL in aggregates, and the three faces of COUNT",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-group-by"
+          ],
+          "focus": "sql-group-by",
+          "audio": "audio/05-04-null-in-aggregates.wav"
+        },
+        {
+          "heading": "5. Conditional aggregates with FILTER",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-group-by"
+          ],
+          "focus": "sql-group-by",
+          "audio": "audio/05-05-conditional-aggregates.wav"
+        },
+        {
+          "heading": "6. Grouping extensions — ROLLUP, CUBE, GROUPING SETS",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-group-by"
+          ],
+          "focus": "sql-group-by",
+          "audio": "audio/05-06-grouping-extensions.wav"
+        },
+        {
+          "heading": "7. Common pitfalls (carry forward)",
+          "scene": "sql",
+          "spine": false,
+          "focus": "sql-group-by",
+          "audio": "audio/05-07-common-pitfalls.wav"
+        }
+      ]
+    },
+    {
+      "id": "06-subqueries-and-ctes",
+      "title": "Subqueries & CTEs",
+      "notebook": "notebooks/06-subqueries-and-ctes.ipynb",
+      "defaultScene": "sql",
+      "sections": [
+        {
+          "heading": "1. Subquery basics — what they return, where they go",
+          "scene": "sql",
+          "spine": true,
+          "role": "hook",
+          "focus": "sql-cte",
+          "audio": "audio/06-01-subquery-basics.wav"
+        },
+        {
+          "heading": "2. Scalar subqueries and derived tables",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-cte"
+          ],
+          "focus": "sql-cte",
+          "audio": "audio/06-02-scalar-subqueries.wav"
+        },
+        {
+          "heading": "3. Subqueries in WHERE — IN, EXISTS, and `NULL`",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-where",
+            "sql-cte"
+          ],
+          "focus": "sql-where",
+          "audio": "audio/06-03-subqueries-in-where.wav"
+        },
+        {
+          "heading": "4. Correlated vs uncorrelated",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-cte"
+          ],
+          "focus": "sql-cte",
+          "audio": "audio/06-04-correlated-vs-uncorrelated.wav"
+        },
+        {
+          "heading": "5. CTEs — naming the steps of a pipeline",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-cte"
+          ],
+          "focus": "sql-cte",
+          "audio": "audio/06-05-ctes.wav"
+        },
+        {
+          "heading": "6. Recursive CTEs — hierarchies and graph traversal",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-cte"
+          ],
+          "focus": "sql-cte",
+          "audio": "audio/06-06-recursive-ctes.wav"
+        },
+        {
+          "heading": "7. Common pitfalls (carry forward)",
+          "scene": "sql",
+          "spine": false,
+          "focus": "sql-cte",
+          "audio": "audio/06-07-common-pitfalls.wav"
+        }
+      ]
+    },
+    {
+      "id": "07-window-functions",
+      "title": "Window Functions",
+      "notebook": "notebooks/07-window-functions.ipynb",
+      "defaultScene": "sql",
+      "sections": [
+        {
+          "heading": "1. The OVER clause — keep the row, compute over a window",
+          "scene": "sql",
+          "spine": true,
+          "role": "hook",
+          "focus": "sql-window",
+          "audio": "audio/07-01-over-clause.wav"
+        },
+        {
+          "heading": "2. PARTITION BY — independent windows per group",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-window"
+          ],
+          "focus": "sql-window",
+          "audio": "audio/07-02-partition-by.wav"
+        },
+        {
+          "heading": "3. ORDER BY inside OVER — order within the window",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-window"
+          ],
+          "focus": "sql-window",
+          "audio": "audio/07-03-order-by-in-over.wav"
+        },
+        {
+          "heading": "4. Ranking functions",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-window"
+          ],
+          "focus": "sql-window",
+          "audio": "audio/07-04-ranking-functions.wav"
+        },
+        {
+          "heading": "5. Offset functions — looking at neighbors",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-window"
+          ],
+          "focus": "sql-window",
+          "audio": "audio/07-05-offset-functions.wav"
+        },
+        {
+          "heading": "6. Window frames — `ROWS` vs `RANGE`",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-window"
+          ],
+          "focus": "sql-window",
+          "audio": "audio/07-06-window-frames.wav"
+        },
+        {
+          "heading": "7. Common pitfalls (carry forward)",
+          "scene": "sql",
+          "spine": false,
+          "focus": "sql-window",
+          "audio": "audio/07-07-common-pitfalls.wav"
+        }
+      ]
+    },
+    {
+      "id": "08-ddl-dml-transactions",
+      "title": "DDL, DML, Transactions & Query Planning",
+      "notebook": "notebooks/08-ddl-dml-transactions.ipynb",
+      "defaultScene": "sql",
+      "sections": [
+        {
+          "heading": "1. DDL — defining the shape of your data",
+          "scene": "sql",
+          "spine": true,
+          "role": "hook",
+          "focus": "sql-ddl",
+          "audio": "audio/08-01-ddl.wav"
+        },
+        {
+          "heading": "2. DML — `INSERT`, `UPDATE`, `DELETE`",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-write-dml"
+          ],
+          "focus": "sql-write-dml",
+          "audio": "audio/08-02-dml.wav"
+        },
+        {
+          "heading": "3. UPSERT — `ON CONFLICT` and `MERGE`",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-merge"
+          ],
+          "focus": "sql-write-dml",
+          "audio": "audio/08-03-upsert.wav"
+        },
+        {
+          "heading": "4. Transactions and ACID",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-transactions"
+          ],
+          "focus": "sql-transactions",
+          "audio": "audio/08-04-transactions-acid.wav"
+        },
+        {
+          "heading": "5. Indexes — the lookup acceleration mechanism",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-create-index",
+            "sql-indexes"
+          ],
+          "focus": "sql-storage",
+          "audio": "audio/08-05-indexes.wav"
+        },
+        {
+          "heading": "6. EXPLAIN — reading a query plan",
+          "scene": "sql",
+          "spine": true,
+          "highlight": [
+            "sql-pipeline"
+          ],
+          "focus": "sql-pipeline",
+          "audio": "audio/08-06-explain.wav"
+        },
+        {
+          "heading": "7. Common pitfalls and where to go next",
+          "scene": "sql",
+          "spine": false,
+          "focus": "sql-ddl",
+          "audio": "audio/08-07-common-pitfalls.wav"
+        }
+      ]
+    }
+  ]
+}

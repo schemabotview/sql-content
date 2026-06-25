@@ -1,0 +1,7 @@
+Common pitfalls to carry forward.
+
+Forgetting the single-value rule is the classic one: every select column outside an aggregate must be in group by. Using where to filter aggregates is another, because aggregates don't exist yet at where time; use having instead. And confusing count star with count of a column bites you whenever the column is nullable.
+
+Remember that sum returns null over zero non-null rows, not zero, and that average divides by the non-null count, not the row count. If nulls should count as zero, coalesce them to zero inside the aggregate explicitly.
+
+Two more. Count distinct on a huge table is expensive, because it can't use the one-pass counting strategy; many engines offer an approximate count distinct for that. And aggregating across a left join and then filtering the right side in where re-introduces the inner-join trap, so move that predicate into the on clause.

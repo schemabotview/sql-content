@@ -1,0 +1,7 @@
+Null in expressions, and three-valued logic.
+
+Null means value unknown. It is not zero. It is not the empty string. It is the absence of a value.
+
+That choice has one big consequence: sequel uses three-valued logic. Every boolean expression evaluates to true, false, or unknown, and unknown is what you get whenever null is involved. Null plus one is null. Null concatenated with a string is null. Null compared to null is unknown, which the where clause treats as not true.
+
+Two functions handle null explicitly. Coalesce takes a list of arguments and returns the first one that is not null. And null if takes two arguments and returns null when they are equal, otherwise it returns the first. Null if is handy for turning sentinel values, like an empty string or minus one, into proper nulls.

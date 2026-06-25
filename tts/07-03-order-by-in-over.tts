@@ -1,0 +1,7 @@
+Order by inside over: order within the window.
+
+The order by inside an over clause is a completely different thing from the order by at the end of a query. The outer one sorts the final result for display. The inner one defines the order rows appear within each window, which is what lets the engine compute things like running totals and rank.
+
+For ranking and offset functions, like row number, rank, lag, and lead, an order by inside over is required, because the function has no meaning without a defined order. For aggregate window functions, like sum and average, adding an order by flips them from seeing all rows in the partition to seeing only rows up to and including the current row, which gives you running aggregates.
+
+The two order-by clauses are independent and often differ. For example, you might compute a running total in date order, then sort the output by customer name.

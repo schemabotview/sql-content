@@ -1,0 +1,5 @@
+Self join: when one side is the same table.
+
+A self join is just a regular join where both sides happen to be the same table. The mechanics are identical to any other join. The only requirement is that you alias the table twice, so the engine can tell the two roles apart.
+
+The classic use case is a self-referential hierarchy: an employees table where each row has a manager id pointing at another row in the same table. To produce pairs of employee name and manager name, you join employees to itself, treating one alias as the employee role and the other as the manager role.

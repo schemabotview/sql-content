@@ -1,0 +1,7 @@
+Partition by: independent windows per group.
+
+Partition by splits the rows into independent windows, one per distinct value of the partition expression. Each row only sees the rows in its own partition.
+
+The shape of the result is identical to group-by partition logic, but no rows are collapsed. Every input row still appears, with the partition's aggregate attached. This is the workhorse pattern: each detail row sitting alongside its own group total or average.
+
+The mental model to keep is short: group by collapses; over partition by preserves.

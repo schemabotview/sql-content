@@ -1,0 +1,7 @@
+Null in aggregates, and the three faces of count.
+
+A single rule covers most of it: every aggregate except count star ignores null. Sum skips nulls, so they contribute nothing to the total. Average divides the sum by the number of non-null values, so if one row out of ten is null, the average divides by nine. Min and max skip nulls too.
+
+Count has three distinct forms, and confusing them is one of the most common sequel bugs. Count star is the number of rows in the group, and nulls are counted because the row exists. Count of a column is the number of rows where that column is not null. And count distinct of a column is the number of distinct non-null values.
+
+One more thing to remember: when every input is null, or there are no rows, sum returns null, not zero. Wrap it in coalesce of sum and zero if you want a zero.

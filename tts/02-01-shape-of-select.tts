@@ -1,0 +1,7 @@
+The shape of a select statement.
+
+Every select has the same skeleton, and only the first two clauses are mandatory. You select some expressions, which is what comes out. You name a from source, which is where rows come from.
+
+After that, everything is optional. A where clause filters which rows to keep. A group by collapses rows into groups. A having clause filters which groups to keep. An order by sorts the result. And a limit, optionally with an offset, slices the result.
+
+Each clause has a single job. This notebook focuses on select and from. The rest get their own notebooks: filtering and sorting in notebook three, aggregation and group by in notebook five, and so on.

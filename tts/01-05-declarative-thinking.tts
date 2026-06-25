@@ -1,0 +1,7 @@
+Declarative thinking.
+
+The hardest mental shift coming from imperative code is letting go of how. You don't write loops. You don't pick index lookups. You write a question, such as: give me each customer's total spend, highest first.
+
+The engine then plans it. It decides which index to scan, which join algorithm to pick, and whether to parallelize across cores. That plan can change as the data grows, or as you add indexes, without you rewriting the query.
+
+The rule of thumb is to trust the planner first. Only override it, with hints, materialized common table expressions, or rewrites, when the query plan shows it is actually wrong. We will meet the explain command properly in notebook eight.

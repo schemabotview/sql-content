@@ -1,0 +1,7 @@
+The logical clause order.
+
+You write a query in one order: select, from, where, group by, having, order by, limit. But the engine executes it in a different order, and internalizing that explains most of sequel's surprises.
+
+The engine starts with from, to pick the source. Then where filters rows out. Then group by collapses the remaining rows into groups. Then having filters whole groups out. Then select projects columns, computes expressions, and assigns aliases. Then order by sorts. And finally limit keeps only the top rows.
+
+Three consequences fall straight out of this. Where cannot see select aliases, because where runs before select creates them. Order by can see select aliases, because it runs after select. And you filter aggregates with having, not where, because aggregates like sum and count only exist after grouping.

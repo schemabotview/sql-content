@@ -1,0 +1,7 @@
+Explain: reading a query plan.
+
+The explain command asks the engine what it would do to run a query, the execution plan, without actually running it. Explain analyze runs the query and also reports actual timings and row counts.
+
+Plans are trees. Each node is an operator: a sequential scan, an index scan, a hash join, a sort, an aggregate. Data flows up the tree from the leaves, which are tables, to the root, which is the final result. A few things to look for. The scan type: a sequential scan reads every row, while an index scan uses an index, so a sequential scan with a filter on a large table hints that an index could help. The join algorithm: a hash join builds a hash table on the smaller side and probes with the larger; a merge join needs sorted inputs; and a nested loop scans the inner side once per outer row, which is fast on tiny inputs and catastrophic on big ones.
+
+Also watch row estimates versus actuals: when they diverge wildly, the planner's statistics are stale, so refresh them. And watch for sort spills, where a sort exceeds memory and writes to disk. Reading plans takes practice, so start by always running explain on slow queries first.

@@ -1,0 +1,7 @@
+Choosing what comes out.
+
+The select clause is a projection. It picks which columns and expressions end up in the result. You can list existing columns, like name and email. You can select all columns with a star, which is fine for ad-hoc queries but best avoided in saved code.
+
+You can also select literals, like one plus one, with no from needed. You can select expressions, such as arithmetic, string concatenation, or date math. You can call functions, like upper of name, or length of name. And you can give any expression a name with the as keyword, which is called an alias.
+
+Aliases matter because the engine has to label every output column. A raw expression like amount times one point oh eight becomes an awkward auto-generated name unless you alias it to something readable.

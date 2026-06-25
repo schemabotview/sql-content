@@ -1,0 +1,7 @@
+Correlated versus uncorrelated subqueries.
+
+A subquery is uncorrelated if it can be evaluated on its own, with no reference to the outer query. It runs once, and the outer query reuses its result for every row.
+
+A subquery is correlated if it references one or more columns from the outer query. Conceptually it runs once per outer row, with the outer row's values substituted in each time. In practice a good planner will often rewrite the correlated form into a join, but you should reason about it as if it ran per row, because that is the mental model that explains the output.
+
+The classic correlated pattern is rows that compare to a per-group statistic: orders bigger than the average for their own customer, products priced above the average for their own category, employees paid above the average for their own department.

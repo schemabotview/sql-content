@@ -1,0 +1,7 @@
+The relational model.
+
+Three pieces of vocabulary do almost all the work. A relation is a table. A tuple is a row. An attribute is a column.
+
+A table has a fixed set of typed columns, and every row is one fact stated in those columns. Picture a customers table where each row holds a customer id, a name, and an email. Each row is one customer.
+
+The key insight here is that row order is not guaranteed. The engine is free to hand back rows in any order it likes. If you want a specific order in the result, you ask for it explicitly with order by.
