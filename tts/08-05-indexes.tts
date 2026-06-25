@@ -5,3 +5,5 @@ An index is a separate data structure, usually a b-tree, that the database maint
 A few things to know. Indexes accelerate reads but slow writes, because every insert, update, or delete that touches an indexed column must also update the index. Primary keys and unique constraints are indexed automatically, so you usually only add indexes explicitly for columns you filter or join on heavily. Selectivity matters: an index on a column with only two distinct values is almost never used.
 
 Two more. Composite indexes are order-sensitive: an index on a, then b, accelerates filters on a, and on a and b together, but not on b alone. And the planner picks: just because an index exists doesn't mean it will be used, because on small tables a sequential scan is often cheaper.
+
+The example creates an index on the orders customer id column, the column we filter and join by. On this seven-row table the planner may still choose a sequential scan, and that is correct, not a bug, because reading the index plus the table costs more than just scanning seven rows. On a million-row table the same index changes everything.

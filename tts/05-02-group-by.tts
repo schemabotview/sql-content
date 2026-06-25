@@ -5,3 +5,5 @@ Group by partitions the rows coming from from and where into groups that share t
 That one-output-row constraint drives the single most important rule in aggregation: every column in select must either be in the group by, or be inside an aggregate function. The reason is mechanical. Imagine grouping by customer id collapses three of one customer's orders into one row. That row clearly has a customer id, because that is the group, and it clearly has a sum of amount, because that is an aggregate. But what would it hold for a raw amount, the first order's, or the largest? The engine refuses to guess.
 
 Standard sequel enforces this rule. MySQL historically allowed it and silently picked an arbitrary value per group, which was fixed in MySQL five point seven with the only-full-group-by mode.
+
+The example left joins customers to orders and groups by customer id and name, producing one row per customer with their order count, their total spend wrapped in coalesce to zero, and their average order value. Because of the left join, Carol appears with a zero total. Every selected column is either in the group by or inside an aggregate, satisfying the single-value rule.

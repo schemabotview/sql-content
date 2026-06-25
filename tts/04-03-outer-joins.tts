@@ -5,3 +5,5 @@ Outer joins preserve unmatched rows instead of dropping them, and there are thre
 A right outer join is the mirror image: it keeps every row from the right. It is rarely used in practice, because you can always flip the table order and write a left join instead, which reads more naturally. A full outer join keeps every row from both sides, filling either side with null where there is no match.
 
 Use a left join when you want, say, every customer with their orders if they have any, so that a customer with no orders still appears in the result with nulls in the order columns.
+
+The first query left joins customers to orders, so every customer appears and Carol shows up with null order fields because she has none. The second full outer joins customers to prospects on matching names: Alice, who is on both sides, matches, and everyone else appears once with nulls on the other side; coalesce of the two names gives a clean sort key.

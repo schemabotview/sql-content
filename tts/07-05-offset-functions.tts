@@ -5,3 +5,5 @@ Offset functions let a row see other rows in its own window. Lag of a column giv
 Both lag and lead accept an optional default value for when the offset falls outside the partition. So lag of amount, one, zero, returns zero for the first row in each partition instead of null.
 
 The classic uses are month-over-month deltas, day-over-day deltas, and gap detection, where you compare each event's timestamp to the previous one in the same partition.
+
+The example shows each order alongside the customer's previous order amount, using lag over a window partitioned by customer and ordered by date, and the delta between the two. The first order in each customer's history has a null previous amount, since there is nothing before it; passing a default to lag would turn that null into a zero.

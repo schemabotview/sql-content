@@ -5,3 +5,5 @@ The order by inside an over clause is a completely different thing from the orde
 For ranking and offset functions, like row number, rank, lag, and lead, an order by inside over is required, because the function has no meaning without a defined order. For aggregate window functions, like sum and average, adding an order by flips them from seeing all rows in the partition to seeing only rows up to and including the current row, which gives you running aggregates.
 
 The two order-by clauses are independent and often differ. For example, you might compute a running total in date order, then sort the output by customer name.
+
+The example computes a running total per customer: it partitions by customer id and adds an order by order date inside the over clause. Adding that order by turns the sum from a whole-partition total into a running one that accumulates up to and including each row in date order. The outer order by only controls how the result is displayed.

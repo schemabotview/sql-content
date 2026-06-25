@@ -5,3 +5,5 @@ A single rule covers most of it: every aggregate except count star ignores null.
 Count has three distinct forms, and confusing them is one of the most common sequel bugs. Count star is the number of rows in the group, and nulls are counted because the row exists. Count of a column is the number of rows where that column is not null. And count distinct of a column is the number of distinct non-null values.
 
 One more thing to remember: when every input is null, or there are no rows, sum returns null, not zero. Wrap it in coalesce of sum and zero if you want a zero.
+
+The first query runs three counts over customers: count star is three, the number of rows; count of email is two, because Carol's email is null and column counts skip nulls; and count distinct email is also two. The second counts over orders: count star is the number of orders placed, while count distinct customer id is the number of unique customers who ordered, which is smaller because one customer placed several orders.

@@ -5,3 +5,5 @@ A subquery is uncorrelated if it can be evaluated on its own, with no reference 
 A subquery is correlated if it references one or more columns from the outer query. Conceptually it runs once per outer row, with the outer row's values substituted in each time. In practice a good planner will often rewrite the correlated form into a join, but you should reason about it as if it ran per row, because that is the mental model that explains the output.
 
 The classic correlated pattern is rows that compare to a per-group statistic: orders bigger than the average for their own customer, products priced above the average for their own category, employees paid above the average for their own department.
+
+The example finds orders larger than the average order for that order's own customer. The correlated subquery in the where clause computes the average amount over orders restricted to the same customer id as the outer row, and a second correlated subquery in the select list shows that customer average next to each order. Conceptually it re-runs the average for each outer row.

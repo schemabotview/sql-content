@@ -5,3 +5,5 @@ A quick recap: where treats unknown the same as false. Any comparison that touch
 Now the expensive surprise: not in is broken when the list contains null. If null is anywhere inside a not in list, the result is unknown for every row, so the query returns zero rows, silently.
 
 Here is why. X not in a, b, null expands to x not equals a, and x not equals b, and x not equals null. That last comparison is unknown, and something and unknown is at best unknown, which where drops. The workarounds are to filter nulls out of the list explicitly, or to use not exists, which we cover in notebook six.
+
+The trap query asks for customers whose id is not in the list one, null. You'd expect Bob and Carol back, but you get zero rows, because the null poisons the whole predicate to unknown. The fix builds the list from a subquery that selects customer ids from orders where customer id is not null, so no null can sneak into the list.

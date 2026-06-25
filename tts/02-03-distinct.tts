@@ -5,3 +5,5 @@ Distinct deduplicates the result set, and there are two things to internalize ab
 First, distinct applies to the whole row of the projection, not to each column separately. If you select distinct a and b, you get distinct pairs of a and b, not distinct values of a and, separately, distinct values of b.
 
 Second, it is not free. The engine has to sort or hash every row to find duplicates. On large tables, ask yourself whether you actually have duplicates, or whether what you really want is a group by, which we cover in notebook five.
+
+The first query selects distinct customer id from orders, collapsing repeated customers down to the unique ones. The second selects distinct customer id paired with the order's year, returning distinct combinations of the two, which shows that distinct works on the whole projected row, not on each column on its own.

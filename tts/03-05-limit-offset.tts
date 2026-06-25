@@ -5,3 +5,5 @@ Limit n keeps only the first n rows of the result. Limit n offset m skips m rows
 Two properties matter. First, limit without order by is non-deterministic. Top ten only makes sense once you have specified what top means. Second, offset is linear in the offset value. To return rows ten thousand and one through ten thousand and twenty, the engine still has to produce, sort, and discard the first ten thousand. On large tables, page five hundred is dramatically slower than page one.
 
 The fix for real pagination is keyset pagination, also called cursor pagination. You remember the last value you saw, and ask for rows after it, ordered by that key, with a limit. That is constant time per page no matter how deep you go.
+
+The example sorts orders by amount descending, then takes limit two offset two, which skips the top two orders and returns the next two: in effect, page two at two rows per page.

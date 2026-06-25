@@ -5,3 +5,5 @@ Set operators stack the results of two queries vertically and treat the rows as 
 Intersect returns rows that appear in both queries. And except, which Oracle calls minus, returns rows in the left query that are not in the right.
 
 Every dialect agrees on a few rules. Both sides must produce the same number of columns. The column types must be compatible, position by position. The result column names come from the first select. And a single order by or limit applies to the combined result, and goes at the very end.
+
+First the notebook creates a small prospects table, people on the newsletter who haven't bought yet, seeded so that Alice appears in both customers and prospects. Then four queries over name and email: union returns every contactable person once, with Alice deduped to a single row; union all keeps duplicates, so Alice appears twice, once from each source; intersect returns only people in both lists, which is just Alice; and except returns prospects who are not yet customers, dropping Alice and leaving Dave and Erin.

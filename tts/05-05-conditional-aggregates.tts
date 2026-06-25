@@ -5,3 +5,5 @@ Sometimes you want to aggregate only the rows that match a condition, and aggreg
 This is dramatically cleaner than the old idiom of summing a case expression, and it lets the engine optimize more aggressively. It is supported by Postgres, DuckDB, Sequelite, and Snowflake. Sequel server and MySQL still require the case form.
 
 It is the right tool when you want side-by-side aggregates over different slices of the same rows, for instance this-period versus prior-period totals in a single row.
+
+The example produces, per customer, three sums in one pass: the sum of amount filtered to orders under fifty, the sum filtered to orders of fifty or more, and the overall sum with no filter. Each filter restricts which rows that one aggregate sees, so you get side-by-side totals over different slices of the same rows, in a single row.

@@ -5,3 +5,5 @@ You write a query in one order: select, from, where, group by, having, order by,
 The engine starts with from, to pick the source. Then where filters rows out. Then group by collapses the remaining rows into groups. Then having filters whole groups out. Then select projects columns, computes expressions, and assigns aliases. Then order by sorts. And finally limit keeps only the top rows.
 
 Three consequences fall straight out of this. Where cannot see select aliases, because where runs before select creates them. Order by can see select aliases, because it runs after select. And you filter aggregates with having, not where, because aggregates like sum and count only exist after grouping.
+
+The first query selects name and the length of name aliased as name length, then orders by that alias descending, which works because select runs before order by. The second query tries to filter where name length is greater than three, using the same alias in the where clause, and it fails, because where runs before select and the alias does not exist yet. The fix is to repeat the expression or wrap it in a subquery.

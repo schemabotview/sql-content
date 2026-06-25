@@ -5,3 +5,5 @@ A window function is an aggregate-like computation that runs over a set of rows,
 The syntax is any aggregate or special function followed by over and a set of parentheses. The over clause is what turns an ordinary function into a window function. Inside the parentheses you describe the window: which rows to include, in what order, and which subset of them this row should see.
 
 An empty over, with nothing in the parentheses, means the whole table is the window, and every row sees all rows. The key contrast to hold onto: group by collapses rows into one per group, while a window function attaches the group's computation to every row and keeps them all.
+
+The example uses an empty over with nothing in the parentheses, so the whole orders table is the window. Each order row comes back with the same grand total, the sum of amount over all rows, and the same overall average attached. The rows are preserved, not collapsed.

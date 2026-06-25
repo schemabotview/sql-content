@@ -5,3 +5,5 @@ The select clause is a projection. It picks which columns and expressions end up
 You can also select literals, like one plus one, with no from needed. You can select expressions, such as arithmetic, string concatenation, or date math. You can call functions, like upper of name, or length of name. And you can give any expression a name with the as keyword, which is called an alias.
 
 Aliases matter because the engine has to label every output column. A raw expression like amount times one point oh eight becomes an awkward auto-generated name unless you alias it to something readable.
+
+The first example projects three columns and aliases the customer id to id. The second shows the richer side of select: it returns the order id and amount, then computes amount times one point oh eight aliased as amount with tax, rounds that to two decimals, extracts the year from the order date, and tacks on the literal string U-S-D as a currency column. Every one of those is a valid select expression.

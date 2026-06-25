@@ -5,3 +5,5 @@ A cross join is the explicit cartesian product: every row on the left paired wit
 The footgun is the comma-separated from syntax that predates explicit join keywords. From a, b is a cross join. Add a where matching their ids and it becomes an inner join, but forget the where and you silently get n times m rows.
 
 Modern explicit join-on syntax makes this almost impossible. Most engines reject an inner join without an on clause as a syntax error. So always use explicit join syntax in saved code.
+
+The first query explicitly cross joins three customers with three orders and returns all nine pairings, which is rarely what you want. The second produces the exact same nine rows by accident, using the old comma-separated from with no matching condition. That second form is how a multi-million-row blowup sneaks into production.

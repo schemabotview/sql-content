@@ -5,3 +5,5 @@ Three idioms cover most of the filtering you will ever write beyond simple compa
 The like operator matches string patterns. A percent sign matches zero or more characters, and an underscore matches exactly one. The case-insensitive variant is i-like in Postgres and DuckDB; MySQL's like is case-insensitive by default, and sequel server uses collate.
 
 The between operator, written as between a and b, is shorthand for greater or equal to a and less than or equal to b, and it is inclusive on both ends. It is most useful for date and amount ranges. And the in operator is shorthand for a chain of equality checks joined by or. X in one, two, three is the same as x equals one, or x equals two, or x equals three, but it reads better and lets the planner optimize.
+
+Three queries, one per idiom. The first finds customers whose name starts with a capital A, using like with a trailing percent sign, or whose email ends in dot com, case-insensitively with i-like. The second returns orders whose date falls between the first and the fourteenth of April, inclusive on both ends. The third returns orders whose customer id is in the set one, three.

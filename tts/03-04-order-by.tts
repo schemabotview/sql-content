@@ -5,3 +5,5 @@ Order by sorts the result set, and a few rules are worth carrying. Direction is 
 You can sort by an expression or by a select alias, because select runs before order by, so the aliases are visible. But null ordering is dialect-defined. Postgres puts nulls last for ascending and first for descending. MySQL and sequel server put them first either way. Use explicit nulls first or nulls last when it matters; that is standard sequel, supported by Postgres, DuckDB, Oracle, and Snowflake.
 
 One thing to avoid: ordering by ordinal position, like order by one, three. It is terse, but it breaks the moment someone reorders the select list.
+
+The example sorts customers by signup date descending, then by email ascending with nulls last, then by name ascending as a final tie-breaker. The explicit nulls last makes Carol's missing email sort to the bottom no matter which dialect runs it.

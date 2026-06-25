@@ -5,3 +5,5 @@ Four common predicates use a subquery on the right-hand side. X in a subquery is
 Exists of a subquery is true if the subquery returns at least one row; the actual column values don't matter, so selecting the literal one works fine. Not exists is true if the subquery returns zero rows, and it handles null correctly, which is why most experienced sequel writers prefer not exists over not in.
 
 The rule of thumb: use exists and not exists when you are asking, are there any matching rows. Use in when you are asking, is this value in a small static list.
+
+Three queries answer related questions. The first finds customers whose id is in the set of customer ids from orders, using in. The second asks the same question with exists, where a correlated subquery checks for any matching order and selects the literal one, because only the presence of a row matters. The third finds customers with no orders using not exists, the safe replacement for not in when the column might be null.

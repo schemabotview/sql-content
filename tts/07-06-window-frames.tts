@@ -5,3 +5,5 @@ The frame is the subset of the partition the function actually sees for the curr
 Explicit frames come in two flavors. Rows, between some bounds, counts physical rows: rows between two preceding and current row is exactly three rows. Range, between some bounds, works on value ranges based on the order-by column, so all rows with the same value as the current row are treated as one position.
 
 The practical guidance: moving averages and trailing windows almost always want rows, not range. Range is for things like all rows in the last seven days, where the data isn't evenly spaced.
+
+The example computes a three-row trailing average per customer: it partitions by customer, orders by date, and sets an explicit frame of rows between two preceding and the current row. That frames exactly this order plus the two before it. A partition with fewer than three rows simply averages what it has.

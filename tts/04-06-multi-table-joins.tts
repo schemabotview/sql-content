@@ -5,3 +5,5 @@ Joins chain. A join b, then join c, is read left to right, with each join adding
 Two things about null in joins are worth carrying around. First, null never matches in a join key. A comparison of two columns is unknown whenever either side is null, so the row is dropped, or, in an outer join, treated as unmatched. This is why join keys are almost always declared not null.
 
 Second, a null in an outer-join result is ambiguous. Did the right side have no match, or did it have a match whose stored value happens to be null? You can't tell from the result alone. When it matters, select a not-null column from the right side, usually its primary key, and check that for null instead.
+
+The example chains two left joins: customers to orders, and customers to prospects matched by name. For each customer it counts their orders, sums their spend with coalesce to zero, and uses a case expression to print yes or no for whether they are also a prospect, based on whether the prospect id came back null. It groups by name and the prospect id and orders by total spent.

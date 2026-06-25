@@ -5,3 +5,5 @@ The hardest mental shift coming from imperative code is letting go of how. You d
 The engine then plans it. It decides which index to scan, which join algorithm to pick, and whether to parallelize across cores. That plan can change as the data grows, or as you add indexes, without you rewriting the query.
 
 The rule of thumb is to trust the planner first. Only override it, with hints, materialized common table expressions, or rewrites, when the query plan shows it is actually wrong. We will meet the explain command properly in notebook eight.
+
+The example asks one question with no loops: for each customer, their order count and total spent, highest first. It left joins customers to orders, groups by name, counts the orders, sums the amount, and wraps that sum in coalesce so a customer with no orders shows zero instead of null, then orders by total spent descending. You described the result; the engine chose how to get it.
